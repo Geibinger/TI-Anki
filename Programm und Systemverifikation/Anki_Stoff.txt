@@ -1,0 +1,67 @@
+#separator:tab
+#html:true
+What is a fault?	<b>Fault</b> is the cause of an error in a system.
+What is an error?	<b>Error</b> refers to an erroneous state in the system, which might not be directly observable in its behavior. An error may lead to a failure, but not necessarily.
+What is a failure?	<b>Failure</b> is the deviation from expected behavior in the system, resulting in a visible fault.
+What is coverage in testing?	<b>Coverage</b> criteria state when enough testing has been done by specifying the parts of the system that must be exercised during tests.
+What is path coverage?	<b>Path Coverage</b> ensures that every possible path in a program is executed at least once.
+What is statement coverage?	<b>Statement Coverage</b> means executing every statement of the program at least once. It is implied by path coverage.
+What is branch coverage?	<b>Branch Coverage</b> ensures that each branch (true/false outcome) of all decisions is executed at least once.
+What is decision coverage?	<b>Decision Coverage</b> ensures every decision in the program is exercised with both true and false outcomes.
+Difference between branch and decision coverage?	<b>Branch Coverage</b> implies decision coverage if "decision" refers to boolean expressions at branching points. <b>Decision Coverage</b> implies branch coverage if branches exclude unconditional jumps.
+What is condition coverage?	<b>Condition Coverage</b> tests all boolean sub-expressions within a decision, without ensuring that each condition affects the decision outcome.
+What is condition/decision coverage?	<b>Condition/Decision Coverage</b> is the combination of condition and decision coverage. It ensures that both conditions and decision outcomes are tested, but not all branches might be covered.
+What is MC/DC?	<b>Modified Condition/Decision Coverage (MC/DC)</b> ensures each condition in a decision has an independent effect on the outcome. It's important for safety-critical systems like those governed by DO-178B.
+What is multiple condition coverage?	<b>Multiple Condition Coverage</b> tests all possible combinations of boolean sub-expressions in a decision.
+What is data flow based coverage criteria?	<b>Data Flow Based Coverage Criteria</b> focuses on variable definitions and uses. It ensures that all variable definitions reach at least one use point.
+Define "all-defs" criteria.	<b>All-defs</b> ensures that every variable definition is used at some point in the program.
+Define "all-c-uses" criteria.	<b>All-c-uses</b> ensures a path exists from each variable definition to every computation use (c-use) of that variable.
+Define "all-p-uses" criteria.	<b>All-p-uses</b> ensures a path exists from each variable definition to every predicate use (p-use) of that variable.
+What is mutation testing?	<b>Mutation Testing</b> involves introducing small changes (mutants) into a program's code to see if the existing test cases detect the introduced bugs. If the test suite does not detect the bug, it "survives"; otherwise, it is "killed."
+What is model-based test case generation?	<b>Model-based Test Case Generation</b> follows this approach:<br>1. Develop an abstract system model.<br>2. Automatically derive abstract test cases.<br>3. Map the abstract test cases to concrete ones.<br>4. Apply concrete test cases to the implementation.
+What are assertion violations in testing?	<b>Assertion Violations</b> involve finding inputs that crash the system, focusing on invalid states like buffer overflows or division by zero.
+What is an oracle in testing?	<b>Oracle</b> refers to a mechanism that provides the correct expected outcome during testing, which could be an executable specification or a correct but inefficient implementation.
+What is bounded model checking?	<b>Bounded Model Checking</b> limits loop iterations to a finite number, allowing the verification of programs within manageable time and resources.
+What is unbounded model checking?	<b>Unbounded Model Checking</b> uses a Kripke structure to verify statements in temporal logic, ensuring they hold for all paths in the system.
+What are the temporal logic operators?	<b>Temporal Logic Operators</b> include:<br><b>X</b> (Next), <b>F</b> (Eventually), <b>G</b> (Globally), <b>U</b> (Until), <b>R</b> (Release).
+What is CTL?	<b>CTL (Computation Tree Logic)</b> is a subset of temporal logic where every temporal operator is immediately preceded by a path quantifier (A for all paths, E for some paths).
+What is LTL?	<b>LTL (Linear Temporal Logic)</b> is another subset of temporal logic where formulas start with the A-operator and do not include other path quantifiers.
+What is Tseitin's transformation?	<b>Tseitin's Transformation</b> converts a propositional logic formula into Conjunctive Normal Form (CNF) by introducing new variables for each subformula, ensuring the formula remains equisatisfiable.
+What are resolution rules in SAT?	<b>Resolution Rules</b> allow logical inference by eliminating terms from clauses. Example:<br>(C ∨ a), (D ∨ ¬a) ⟹ (C ∨ D).
+What is the DPLL algorithm?	<b>DPLL (Davis–Putnam–Logemann–Loveland)</b> is an algorithm for solving SAT problems that involves unit propagation, making decisions, analyzing conflicts, and backtracking to resolve them.
+Explain the heuristic DLIS in SAT solving.	<b>DLIS (Dynamic Largest Individual Sum)</b> selects a variable assignment that maximizes the number of satisfied clauses.
+Explain the heuristic VSIDS in SAT solving.	<b>VSIDS (Variable State Independent Decaying Sum)</b> favors variables in conflict clauses added recently, speeding up the decision process.
+Example: Path Coverage	<b>Path Coverage Example</b><br><i>Program:</i><br><pre>while (1) { if (getchar() == EOF) break; }</pre><br><i>Explanation:</i> Each new iteration of the loop creates a new path, making full path coverage difficult or impossible.
+What is SAT?	<b>SAT</b> stands for the Boolean Satisfiability Problem, which asks if there is a way to assign truth values to variables in a propositional logic formula such that the entire formula evaluates to true.
+What is a propositional logic formula?	A <b>propositional logic formula</b> consists of boolean variables combined using logical operators like AND, OR, NOT, etc. The goal is to determine whether there is an assignment of truth values that satisfies the formula.
+What is system verification?	<b>System Verification</b> is the process of checking whether a system meets specified requirements, ensuring that it behaves as intended under all possible conditions.
+What is program verification?	<b>Program Verification</b> involves proving that a program works correctly according to its formal specification, often using techniques like formal proofs, model checking, and testing.
+What is a Kripke structure?	A <b>Kripke structure</b> is a mathematical model used in model checking to represent possible states of a system and transitions between those states. It is used to evaluate properties in temporal logic.
+What is the difference between bounded and unbounded model checking?	<b>Bounded Model Checking</b> limits the number of loop iterations or transitions, making it easier to verify within finite resources. <b>Unbounded Model Checking</b> explores all possible paths in a system, including loops, using a Kripke structure.
+What is model checking used for?	<b>Model Checking</b> is used to automatically verify whether a system satisfies certain properties expressed in temporal logic by exploring all possible states and transitions of the system.
+What is temporal logic?	<b>Temporal Logic</b> is used to describe how the truth of propositions changes over time. It includes operators like "Eventually" (F), "Always" (G), and "Until" (U).
+What is an example of a temporal logic formula?	An example of a <b>temporal logic formula</b> is <i>AF p</i>, which means "on all paths, eventually p will be true."
+What are the goals of testing?	The goals of <b>testing</b> are to find errors, validate functionality, and ensure that the system behaves correctly under all conditions.
+What is a test case?	A <b>test case</b> is a set of conditions or inputs used to check whether a system behaves as expected.
+What is an oracle in software testing?	An <b>oracle</b> provides the correct expected output for a set of test inputs, which can be a specification, a reference implementation, or an efficient but less precise version of the software.
+What is automated test case generation?	<b>Automated Test Case Generation</b> refers to the process of automatically generating test cases from a system model or specification to ensure comprehensive testing.
+What is the difference between a fault and an error?	A <b>fault</b> is the cause of an error in the system, while an <b>error</b> is an erroneous state that may not be directly visible but could lead to failure.
+What is the difference between an error and a failure?	An <b>error</b> is an internal system state that deviates from the correct one. A <b>failure</b> occurs when this erroneous state leads to externally visible incorrect behavior.
+Why is MC/DC important in safety-critical systems?	<b>MC/DC (Modified Condition/Decision Coverage)</b> ensures that every condition in a decision has been independently shown to affect the outcome. It’s critical in industries like aviation to ensure thorough testing and reliability.
+What is unit propagation in SAT solving?	<b>Unit Propagation</b> simplifies a formula by assigning values to variables when clauses are reduced to a single literal (unit clause), leading to further simplifications.
+What is backtracking in SAT solving?	<b>Backtracking</b> is a technique used in SAT solving where, after reaching a conflict in the variable assignments, the algorithm undoes some decisions to try different assignments.
+What is a heuristic in the context of SAT solving?	In <b>SAT solving</b>, a <b>heuristic</b> is a strategy used to decide which variable to assign next. Examples include DLIS (maximize satisfied clauses) and VSIDS (favor recently conflicted variables).
+What is a conflict clause in SAT solving?	A <b>conflict clause</b> is a clause added to the SAT problem during backtracking to avoid repeating the same variable assignments that led to a conflict.
+What is formal verification?	<b>Formal Verification</b> uses mathematical techniques to prove the correctness of a system with respect to a formal specification.
+Why is unreachable code a problem in statement coverage?	<b>Unreachable code</b> cannot be executed under any input conditions, which means statement coverage can’t reach 100%, potentially leaving parts of the program untested.
+What is a symbolic execution?	<b>Symbolic Execution</b> is a technique where program execution paths are explored using symbolic values instead of concrete inputs. It generates formulas that represent program states, which can be used to find errors like assertion violations.
+What is the purpose of condition coverage?	<b>Condition Coverage</b> ensures that each boolean sub-expression in a decision is exercised, but it does not guarantee that these conditions affect the overall decision outcome.
+What is the difference between branch coverage and decision coverage?	<b>Branch Coverage</b> requires testing all branches (true/false) of each decision, whereas <b>Decision Coverage</b> ensures all decision points are tested with both true and false outcomes. Branch coverage is a subset of decision coverage under some conditions.
+Explain the resolution rule in propositional logic.	<b>Resolution</b> is an inference rule in propositional logic. Given two clauses, (A ∨ B) and (¬A ∨ C), we can infer (B ∨ C) by eliminating the variable A.
+What are the key components of the DPLL algorithm?	<b>DPLL (Davis–Putnam–Logemann–Loveland)</b> algorithm consists of:<br>1. Unit propagation<br>2. Decision-making (assigning values to variables)<br>3. Conflict analysis<br>4. Backtracking to resolve conflicts.
+What is all-c-uses/some-p-uses coverage?	<b>All-c-uses/some-p-uses</b> ensures that each variable definition reaches all computation uses (c-uses) and at least one predicate use (p-use) if no c-use exists.
+What is all-p-uses/some-c-uses coverage?	<b>All-p-uses/some-c-uses</b> ensures that each variable definition reaches all predicate uses (p-uses) and at least one computation use (c-use) if no p-use exists.
+What is all-uses in data flow coverage?	<b>All-uses</b> ensures that each variable definition reaches all possible computation and predicate uses.
+What is all-du-paths in data flow coverage?	<b>All-du-paths</b> ensures that all paths from a variable definition to its computation and predicate uses are exercised, without omitting any possible paths.
+What is path coverage?	<b>Path Coverage</b> requires executing every possible path the program could take. It’s often not achievable in programs with loops, as each loop iteration creates a new path.
+What is all-defs in data flow coverage?	<b>All-defs</b> requires that each variable definition reaches at least one use point in the program.

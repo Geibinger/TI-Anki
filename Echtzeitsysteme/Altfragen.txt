@@ -1,0 +1,153 @@
+Q: What is a Real-Time System?  A: "A system where the result depends not only on the logical correctness of the computation but also on the time at which the results are produced."
+
+Q: What are Deadlines and what types are there?  A: "Deadline = The time by which a RTS must deliver a result.
+   - Soft: The result is still useful after the deadline.
+   - Firm: The result has no value after the deadline.
+   - Hard: The result must be present to avoid a catastrophe."
+
+Q: Explain Temporal Order and Causal Order.  A: "Temporal Order = Events e1 and e2 occur either simultaneously or one after the other.
+   Causal Order = Event1 can cause Event2 if Event1 occurs before Event2, but not vice versa."
+
+Q: Define and explain Clock, Granularity, Drift, Precision, and Accuracy.  A: "
+   - Clock: A physical device with a counter that increments at regular intervals.
+   - Granularity: The number of microticks of the reference clock z between two microticks of clock c.
+   - Drift: Deviation of a clock from the reference time.
+   - Precision: Maximum offset among a set of clocks at tick i.
+   - Accuracy: Offset of a clock relative to the reference clock z."
+
+Q: What is the Reasonableness Condition?  A: "The synchronization error must be smaller than one macrogranule."
+
+Q: Explain the Synchronization Condition.  A: "
+   - Drift Offset: 2 * Synchronization Interval * Drift Rate.
+   - Convergence Function: Ensures that clocks converge to the correct time."
+
+Q: Describe the Central Master Algorithm and its precision.  A: "The master sends a message to all slave nodes. Slaves calculate the deviation and correct their clocks based on the timestamp in the master's message.
+   - Precision: Determined by the difference in latency between the fastest and slowest nodes (latency jitter epsilon)."
+
+Q: What are the types of clock corrections?  A: "
+   - State: The clock is set directly to the correct time.
+   - Rate: The clock speed is adjusted until the error is corrected."
+
+Q: Explain the Fault Tolerant Average Algorithm.  A: "Nodes send their times, and k highest and lowest times are discarded. The average of the remaining times is used for correction.
+   - Worst Case: When faulty clocks place their times at the edges of the precision window.
+   - Convergence Function: Ensures convergence despite faulty clocks.
+   - Precision: Calculated using the Byzantine error factor from a table."
+
+Q: Define WCET and describe the calculation techniques.  A: "Worst Case Execution Time: Time required to execute a specific code segment in a specific context on a specific machine.
+   - Techniques:
+     1. Tree-based
+     2. Path-based
+     3. IPET"
+
+Q: Explain Tree-Based WCET Calculation.  A: "For conditional statements and loops, WCET is calculated using the maximum path or loop bounds.
+   Example: 
+     if (expr) {
+         ...
+     }
+     else {
+         ...
+     }
+     WCET = T(expr) + MAX(T(then), T(else))
+     
+     for(i=0; i < 10; i++) {
+         ...
+     }
+     WCET = T(test) * (LB + 1) + LB * body
+     LB = Loop Bound"
+
+Q: Describe IPET.  A: "Implicit Path Enumeration Technique: Maps program structure to a graph and solves for the maximum execution time using linear programming or constraint solvers.
+   - Advantages: Handles complex flows, easily generated constraints.
+   - Disadvantages: NP-hard."
+
+Q: What are Schedulability Tests (Utilization-Based)?  A: "
+   - RMS: 
+     - Necessary: U ≤ n(2^(1/n) - 1)
+     - Sufficient: U ≤ 0.69
+   - EDF: 
+     - Both necessary and sufficient: U ≤ 1"
+
+Q: Explain the Priority Ceiling Protocol.  A: "Each task has a base priority and each resource has a priority ceiling. A task can lock a resource only if its priority is higher than the ceiling of any other locked resource."
+
+Q: Define a Permanent Message.  A: "A message is permanent at an object O when all prior messages sent to O have been received by O."
+
+Q: What is an RT Entity?  A: "A variable or property that serves a purpose and changes over time, e.g., switch position or flow through a pipe."
+
+Q: What is an RT Image?  A: "A representation of an RT entity that is valid for a specific interval, created from observations or state estimations."
+
+Q: What is an RT Object?  A: "A container for an RT Image or entity, with a clock matching the entity's dynamics, triggering procedures at specific times."
+
+Q: Define Observation.  A: "Information about the state of an RT entity at a specific time, consisting of a name, value, and timestamp."
+
+Q: Explain Priority Inversion and how to counter it.  A: "Priority Inversion occurs when a high-priority task is blocked by a lower-priority task. Countermeasures include Priority Inheritance and Priority Ceiling Protocols."
+
+Q: Describe the Central Master & Fault-Tolerant Average (FTA) Algorithm.  A: "The master sends a message with its time to all nodes, which adjust their clocks based on this information, correcting for transmission delays."
+
+Q: What is the Reasonableness Condition?  A: "Ensures that the synchronization error is smaller than a macrogranule."
+
+Q: Explain Utilization-Based Schedulability for Rate Monotonic Scheduler.  A: "Necessary: U ≤ n(2^(1/n) - 1)
+Sufficient: U ≤ 0.69"
+
+Q: Define RT-Image and its types.  A: "
+   - Temporal accuracy: How accurately the image reflects the current state.
+   - Phase-sensitive and phase-insensitive RT-Image: Depending on whether the image changes with phases or remains constant.
+   - Phase-sensitive: Dependent on the phase.
+   - Image: A snapshot of the entity state at a specific time."
+
+Q: What is WCET and its analysis methods?  A: "WCET (Worst Case Execution Time) analysis determines the maximum time a task can take.
+   - Methods: Implicit path analysis, tree-based analysis, and IPET."
+
+Q: Explain IPET (Implicit Path Enumeration Technique).  A: "Maps program paths to a graph, calculates execution time using linear programming."
+
+Q: Compare Static and Dynamic Scheduling.  A: "
+   - Static: Schedules are fixed in advance.
+   - Dynamic: Schedules are determined at runtime.
+   - Includes details of Least Laxity (LL) scheduling for both single-core and multicore systems."
+
+Q: Describe the Fundamental Limits of Time Measurement.  A: "Discusses the precision and accuracy limits in measuring time, including clock drift and synchronization errors."
+
+Q: Define and compare FPS and RMS.  A: "
+   - FPS (Fixed Priority Scheduling) and RMS (Rate Monotonic Scheduling) are priority-based scheduling methods.
+   - RMS is optimal among fixed-priority scheduling algorithms."
+
+Q: Explain Explicit vs. Implicit Flow Control.  A: "
+   - Explicit: The sender controls the flow of messages.
+   - Implicit: The receiver controls the flow of messages."
+
+Q: What is Permanence in message passing?  A: "A message is permanent when all earlier messages have been received by the object."
+
+Q: What is an End-to-End Protocol?  A: "Protocol ensuring reliable communication between two end systems over a network."
+
+Q: Define Fail-Safe and Fail-Operational Applications.  A: "
+   - Fail-Safe: The system enters a safe state upon failure.
+   - Fail-Operational: The system continues to operate in a degraded mode upon failure."
+
+Q: Describe CSMA/CA and its arbitration method.  A: "
+   - CSMA/CA: Carrier Sense Multiple Access with Collision Avoidance.
+   - Ensures that bits stabilize on the channel before transmission."
+
+Q: What are Precision, Accuracy, and Granularity?  A: "
+   - Precision: Maximum deviation among a set of clocks.
+   - Accuracy: Deviation from the reference time.
+   - Granularity: Interval between ticks of a clock."
+
+Q: Explain Logical and Vector Clocks.  A: "
+   - Logical Clocks: Ensure a consistent ordering of events.
+   - Vector Clocks: Track causality between events."
+
+Q: Describe Minislotting.  A: "A technique in time-triggered protocols where time is divided into small slots for message transmission."
+
+Q: Compare Time-Triggered and Event-Triggered Protocols.  A: "
+   - Time-Triggered: Events are triggered at specific times.
+   - Event-Triggered: Events are triggered by conditions or external events."
+
+Q: Explain H-State and G-State.  A: "H-State: Historical state of a system.
+G-State: Global state of a system at a specific time."
+
+Q: What are Timing Anomalies?  A: "Unexpected variations in execution time due to changes in execution order or resource contention."
+
+Q: Describe Lamport Clocks and Scheduling with Mutex.  A: "
+   - Lamport Clocks: Logical clocks for ordering events in a distributed system.
+   - Scheduling with Mutex: Ensures mutual exclusion and prevents priority inversion."
+
+Q: What is Traffic Shaping/Policy and the Token Bucket Algorithm? Here is the revised list with line breaks properly formatted for Anki import:
+
